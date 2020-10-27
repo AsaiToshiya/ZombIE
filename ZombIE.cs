@@ -1,5 +1,5 @@
 ﻿/**
- * ZombIE 1.0.0
+ * ZombIE 1.0.1
  * Copyright (c) 2020 Asai Toshiya.
  *
  * License: The MIT License (https://opensource.org/licenses/MIT)
