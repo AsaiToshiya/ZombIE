@@ -33,6 +33,8 @@ namespace YourNamespace
 
         private static readonly Regex NotificationBarDownloadFileNameRegex = new Regex(@".*? から (.*?) (\(.*?\) )?を開くか、または保存しますか\?");
 
+        public static TimeSpan ClickDelay { get; set; } = TimeSpan.FromMilliseconds(500);
+
         public static TimeSpan DownloadTimeout { get; set; } = TimeSpan.Zero;
 
         public static TimeSpan FindElementTimeout { get; set; } = TimeSpan.FromSeconds(30);
@@ -106,6 +108,8 @@ namespace YourNamespace
             }
 
             var fileName = match.Groups[1].Value;
+
+            Thread.Sleep(ClickDelay);
             Click(saveButton);
 
             return fileName;
@@ -144,6 +148,8 @@ namespace YourNamespace
                 }
 
                 var fileName = match.Groups[1].Value;
+
+                Thread.Sleep(ClickDelay);
                 Click(saveButton);
 
                 return fileName;
@@ -225,6 +231,7 @@ namespace YourNamespace
                             var retryButton = FindElementByName(notificationBar, "再試行");
                             if (retryButton != null)
                             {
+                                Thread.Sleep(ClickDelay);
                                 Click(retryButton);
                             }
                             continue;
@@ -243,6 +250,8 @@ namespace YourNamespace
                         }
 
                         var fileName = match.Groups[1].Value;
+
+                        Thread.Sleep(ClickDelay);
                         Click(closeButton);
 
                         return fileName;
